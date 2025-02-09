@@ -1,9 +1,10 @@
+<!-- user-login.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DeliveryExpress - Login Admin</title>
+    <title>DeliveryExpress - Login</title>
     <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
@@ -13,12 +14,12 @@
                 ← Voltar
             </button>
             <h2>DeliveryExpress</h2>
-            <p>Painel Administrativo</p>
+            <p>Login do Cliente</p>
         </div>
-        <form class="login-form" id="adminLoginForm">
+        <form class="login-form" id="userLoginForm">
             <div class="form-group">
                 <label for="email">E-mail</label>
-                <input type="email" id="email" name="email" required placeholder="Seu e-mail de admin">
+                <input type="email" id="email" name="email" required placeholder="Seu e-mail">
             </div>
             <div class="form-group">
                 <label for="password">Senha</label>
@@ -26,11 +27,14 @@
             </div>
             <button type="submit" class="login-button">Entrar</button>
         </form>
+        <div class="register-link">
+            <p>Ainda não tem conta? <a href="user-register.html">Cadastre-se</a></p>
+        </div>
         <div class="forgot-password">
             <a href="#">Esqueceu sua senha?</a>
         </div>
     </div>
-
-    <script src="/js/login.js"></script>
+    <script src="/js/userAuth.js"></script>
 </body>
 </html>
+

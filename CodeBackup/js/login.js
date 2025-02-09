@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('currentUser', JSON.stringify(user));
             
             // Redirect to dashboard
-            window.location.href = '/CodeBackup/html/dashboardAntiga.html';
+            window.location.href = '/html/dashboardAntiga.html';
         } else {
             alert('Credenciais inválidas. Tente novamente.');
         }

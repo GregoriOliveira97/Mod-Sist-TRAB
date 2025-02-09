@@ -3,9 +3,27 @@ import { menuItems as defaultMenuItems } from './menuData.js';
 document.addEventListener('DOMContentLoaded', () => {
     let currentPage = 1;
     const itemsPerPage = 4;
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
     // Recuperar itens do localStorage ou usar os dados padrão
     const menuItems = JSON.parse(localStorage.getItem('menuItems')) || defaultMenuItems;
+
+    function addToCart(item) {
+        const existingItem = cart.find(cartItem => cartItem.id === item.id);
+        
+        if (existingItem) {
+            existingItem.quantity = (existingItem.quantity || 1) + 1;
+        } else {
+            cart.push({
+                name: item.name,
+                category: item.category,
+                price: item.price,
+                quantity: 1
+            });
+        }
+        
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }
 
     // Função para renderizar pratos
     function renderMenuItems(filteredItems = menuItems) {
@@ -52,7 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Adiciona evento de adicionar ao carrinho (placeholder)
             const addToCartButton = menuItemCard.querySelector('.restaurant-card-button');
             addToCartButton.addEventListener('click', () => {
-                console.log(`Adicionando ${item.name} ao carrinho`);
+                addToCart(item);
+                alert(`${item.name} adicionado ao carrinho!`);
             });
         });
 
@@ -141,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
             renderMenuItems();
         }
     });
-
+    
     // Chamada inicial de renderização com paginação
     renderMenuItems();
 });

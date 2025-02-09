@@ -52,47 +52,119 @@ body {
     text-decoration: none;
 }
 
+.dashboard-section > div {
+    margin-bottom: 0.25rem; /* Reduzido de 0.5rem */
+}
+
+.dashboard-section h2 {
+    font-size: 1.1rem; /* Reduzido de 1.2rem */
+    margin-bottom: 0.25rem; /* Reduzido de 0.5rem */
+}
+
+/* Tooltip para texto truncado */
+.dashboard-table td {
+    position: relative;
+}
+
+.dashboard-table td:hover {
+    overflow: visible;
+    white-space: normal;
+    background-color: #f8f9fa;
+    position: relative;
+    z-index: 1;
+}
+
+/* Scrollbar personalizado */
+.table-responsive::-webkit-scrollbar {
+    width: 6px; /* Reduzido de 8px */
+    height: 6px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Ajuste do espaçamento principal */
 .main-content {
-    width: 100%;
-    padding: 1rem;
+    padding: 0.5rem; /* Reduzido de 0.8rem */
 }
 
 .dashboard-section {
     background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    margin-bottom: 2rem;
-    padding: 1rem;
+    border-radius: 8px; /* Reduzido de 10px */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Reduzido de 4px 6px */
+    margin-bottom: 0.5rem; /* Reduzido de 1rem */
+    padding: 0.5rem; /* Reduzido de 0.8rem */
 }
 
 .table-responsive {
     overflow-x: auto;
+    max-height: 350px; /* Reduzido de 400px */
+    overflow-y: auto;
 }
 
 .dashboard-table {
     width: 100%;
     border-collapse: collapse;
     min-width: 600px;
+    font-size: 0.85rem; /* Reduzido de 0.9rem */
 }
 
 .dashboard-table th, 
 .dashboard-table td {
     border: 1px solid var(--cor-borda);
-    padding: 0.5rem;
+    padding: 0.3rem; /* Reduzido de 0.4rem */
     text-align: left;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-.dashboard-table th {
-    background-color: var(--cor-fundo-claro);
+/* Larguras específicas para cada coluna */
+.dashboard-table th:nth-child(1),
+.dashboard-table td:nth-child(1) {
+    width: 10%;
+}
+
+.dashboard-table th:nth-child(2),
+.dashboard-table td:nth-child(2) {
+    width: 10%;
+}
+
+.dashboard-table th:nth-child(3),
+.dashboard-table td:nth-child(3) {
+    width: 12%;
+}
+
+.dashboard-table th:nth-child(4),
+.dashboard-table td:nth-child(4) {
+    width: 10%;
+}
+
+.dashboard-table th:nth-child(5),
+.dashboard-table td:nth-child(5) {
+    width: 10%;
+}
+
+.dashboard-table th:nth-child(6),
+.dashboard-table td:nth-child(6) {
+    width: 10%;
 }
 
 .btn {
-    padding: 0.3rem 0.6rem;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    margin: 0.2rem;
+    padding: 0.2rem 0.4rem; /* Reduzido de 0.25rem 0.5rem */
+    font-size: 0.75rem; /* Reduzido de 0.8rem */
+    margin: 0.05rem; /* Reduzido de 0.1rem */
 }
 
 .btn-edit {
@@ -215,6 +287,19 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
+.sidebar {
+    left: 0;
+}
+
+.main-content {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+}
+
+.mobile-header, .mobile-menu-toggle {
+    display: none;
+}
+
 
 @media screen and (min-width: 1024px) {
     .sidebar {

@@ -1,6 +1,7 @@
 // Dados iniciais de usuários e itens de menu
 let users = [];
 let menuItens= [];
+let registeredUsers = [];
 
 
 // Funções de Gerenciamento de Usuários
@@ -243,6 +244,70 @@ function closeModal(modalId) {
     document.getElementById(modalId).style.display = 'none';
 }
 
+
+//Customer User
+function renderCustomerUsers() {
+    const tbody = document.getElementById('customer-users-tbody');
+    const users = JSON.parse(localStorage.getItem('userCustomers')) || [];
+    
+    tbody.innerHTML = '';
+    
+    users.forEach(user => {
+        const row = `
+            <tr>
+                <td>${user.name}</td>
+                <td>${user.email}</td>
+                <td>${user.phone}</td>
+                <td>${user.address.street}, ${user.address.number} - ${user.address.neighborhood}</td>
+                <td>${user.address.city}/${user.address.state}</td>
+                <td>
+                    <button class="btn btn-view" onclick="viewUserDetails(${user.id})">Ver Detalhes</button>
+                    <button class="btn btn-delete" onclick="openCustomerDeleteModal(${user.id})">Excluir</button>
+                </td>
+            </tr>
+        `;
+        tbody.innerHTML += row;
+    });
+}
+
+function viewUserDetails(userId) {
+    const users = JSON.parse(localStorage.getItem('userCustomers')) || [];
+    const user = users.find(u => u.id === userId);
+    
+    if (user) {
+        document.getElementById('user-details-name').textContent = user.name;
+        document.getElementById('user-details-email').textContent = user.email;
+        document.getElementById('user-details-phone').textContent = user.phone;
+        document.getElementById('user-details-address').textContent = 
+            `${user.address.street}, ${user.address.number}`;
+        document.getElementById('user-details-complement').textContent = 
+            user.address.complement || 'Não informado';
+        document.getElementById('user-details-neighborhood').textContent = 
+            user.address.neighborhood;
+        document.getElementById('user-details-city').textContent = 
+            `${user.address.city}/${user.address.state}`;
+        
+        document.getElementById('user-details-modal').style.display = 'block';
+    }
+}
+
+function openCustomerDeleteModal(userId) {
+    document.getElementById('customer-delete-id').value = userId;
+    document.getElementById('customer-delete-modal').style.display = 'block';
+}
+
+function deleteCustomerUser() {
+    const userId = parseInt(document.getElementById('customer-delete-id').value);
+    const users = JSON.parse(localStorage.getItem('userCustomers')) || [];
+    
+    const updatedUsers = users.filter(user => user.id !== userId);
+    localStorage.setItem('userCustomers', JSON.stringify(updatedUsers));
+    
+    renderCustomerUsers();
+    closeModal('customer-delete-modal');
+}
+
+
 // Inicialização
 document.addEventListener('DOMContentLoaded', () => {
     // Recuperar usuários do localStorage
@@ -286,6 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderUsers();
     renderMenuItems();
+    renderCustomerUsers();
 
 });
 function logout() {
@@ -297,11 +363,8 @@ function logout() {
     window.location.href = 'login.html';
 }
 
-// Modify the DOMContentLoaded event listener to add logout functionality
 document.addEventListener('DOMContentLoaded', () => {
-    // ... existing initialization code ...
 
-    // Add logout event listener to the Logout link
     const logoutLink = document.querySelector('nav ul li:last-child a');
     if (logoutLink) {
         logoutLink.addEventListener('click', function(e) {
@@ -310,3 +373,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+

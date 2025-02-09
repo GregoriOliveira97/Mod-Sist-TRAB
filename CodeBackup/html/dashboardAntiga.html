@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DeliveryExpress - Painel Administrativo</title>
-    <link rel="stylesheet" href="/CodeBackup/css/dashboardAntiga.css">
+    <link rel="stylesheet" href="/css/dashboardAntiga.css">
 </head>
 <body>
     <div class="mobile-header">
@@ -20,9 +20,9 @@
             <nav>
                 <ul class="sidebar-nav">
                     <li><a href="#">Pagina Inicial</a></li>
-                    <li><a href="#">Cardápio</a></li>
+                    <li><a href="cardapioTest.html">Cardápio</a></li>
                     <li><a href="#">Pedidos</a></li>
-                    <li><a href="#">Logout</a></li>
+                    <li><a href="landingPageBackup.html">Logout</a></li>
                 </ul>
             </nav>
         </aside>
@@ -72,6 +72,28 @@
                     </table>
                 </div>
             </section>
+            <section class="dashboard-section">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h2>Usuários Clientes Registrados</h2>
+                </div>
+                <div class="table-responsive">
+                    <table class="dashboard-table" id="customer-users-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>Telefone</th>
+                                <th>Endereço</th>
+                                <th>Cidade/Estado</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="customer-users-tbody">
+                            <!-- Preenchido via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
         </main>
     </div>
 
@@ -109,6 +131,22 @@
             <div class="modal-footer">
                 <button class="btn btn-delete" onclick="closeModal('user-edit-modal')">Cancelar</button>
                 <button class="btn btn-edit" onclick="updateUser()">Salvar</button>
+            </div>
+        </div>
+    </div>
+    <div id="user-delete-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Confirmar Exclusão</h3>
+                <span class="close-modal" onclick="closeModal('user-delete-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="user-delete-id">
+                <p>Tem certeza que deseja excluir este usuario?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-delete" onclick="deleteUser()">Excluir</button>
+                <button class="btn btn-edit" onclick="closeModal('user-delete-modal')">Cancelar</button>
             </div>
         </div>
     </div>
@@ -178,13 +216,55 @@
                 <p>Tem certeza que deseja excluir este item de menu?</p>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-edit" onclick="closeModal('menu-item-delete-modal')">Cancelar</button>
                 <button class="btn btn-delete" onclick="deleteMenuItem()">Excluir</button>
+                <button class="btn btn-edit" onclick="closeModal('menu-item-delete-modal')">Cancelar</button>
             </div>
         </div>
     </div>
 
-    <script src="/CodeBackup/js/dashboard.js">
+    <!-- Modal de Detalhes do Usuário -->
+<div id="user-details-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Detalhes do Usuário</h3>
+            <span class="close-modal" onclick="closeModal('user-details-modal')">&times;</span>
+        </div>
+        <div class="modal-body">
+            <p><strong>Nome:</strong> <span id="user-details-name"></span></p>
+            <p><strong>Email:</strong> <span id="user-details-email"></span></p>
+            <p><strong>Telefone:</strong> <span id="user-details-phone"></span></p>
+            <p><strong>Endereço:</strong> <span id="user-details-address"></span></p>
+            <p><strong>Complemento:</strong> <span id="user-details-complement"></span></p>
+            <p><strong>Bairro:</strong> <span id="user-details-neighborhood"></span></p>
+            <p><strong>Cidade/Estado:</strong> <span id="user-details-city"></span></p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-edit" onclick="closeModal('user-details-modal')">Fechar</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Exclusão de Cliente -->
+<div id="customer-delete-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Confirmar Exclusão</h3>
+            <span class="close-modal" onclick="closeModal('customer-delete-modal')">&times;</span>
+        </div>
+        <div class="modal-body">
+            <input type="hidden" id="customer-delete-id">
+            <p>Tem certeza que deseja excluir este usuário cliente?</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-delete" onclick="deleteCustomerUser()">Excluir</button>
+            <button class="btn btn-edit" onclick="closeModal('customer-delete-modal')">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+
+
+    <script src="/js/dashboard.js">
         // Placeholder for JavaScript functions will be added in next step
         function toggleSidebar() {
             const sidebar = document.querySelector('.sidebar');
