@@ -1,0 +1,140 @@
+
+/* Reuse existing CSS variables and global styles */
+:root {
+    --cor-primaria: #FF4D4D;
+    --cor-texto-claro: #ffffff;
+    --cor-fundo-claro: #f4f4f4;
+    --cor-borda: #ddd;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--cor-fundo-claro);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.login-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-header {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.login-header h2 {
+    color: var(--cor-primaria);
+    margin-bottom: 0.5rem;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--cor-borda);
+    border-radius: 5px;
+}
+
+.login-button {
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto-claro);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+}
+
+
+.forgot-password {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.forgot-password a {
+    color: var(--cor-primaria);
+    text-decoration: none;
+}
+
+.back-button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: none;
+    border: none;
+    color: var(--cor-primaria);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.back-button:hover {
+    text-decoration: underline;
+}
+
+/* Add these styles to your existing login.css */
+
+.register-container {
+    max-width: 500px;
+    padding: 2rem;
+}
+
+.register-form {
+    display: grid;
+    gap: 1rem;
+}
+
+.register-form h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.register-form .form-group {
+    margin-bottom: 0.5rem;
+}
+
+.register-link, .login-link {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.register-link a, .login-link a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.register-link a:hover, .login-link a:hover {
+    text-decoration: underline;
+}

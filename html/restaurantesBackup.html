@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CodeBackup/css/restaurantesBackup.css">
+    <title>DeliveryExpress - Restaurantes</title>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header class="main-header">
+        <div class="header-logo">
+            <h1 class="logo-title">DeliveryExpress</h1>
+        </div>
+        <nav class="main-nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="landingPageBackup.html" class="nav-link">Início</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Restaurantes</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Contato</a></li>
+            </ul>
+        </nav>
+        <button class="header-cta-button">Fazer Pedido</button>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <!-- Seção de Busca e Filtros -->
+        <section class="restaurants-search-section">
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Busque por tipo de comida">
+                <button class="search-button">Buscar</button>
+            </div>
+
+            <div class="filters-container">
+                <div class="filter-category">
+                    <label>Categorias:</label>
+                    <select class="category-select">
+                        <option value="">Todas</option>
+                        <option value="pizza">Pizza</option>
+                        <option value="hamburger">Hamburger</option>
+                        <option value="japonesa">Japonesa</option>
+                        <option value="brasileira">Brasileira</option>
+                        <option value="vegetariana">Vegetariana</option>
+                    </select>
+                </div>
+
+                <div class="filter-rating">
+                    <label>Avaliação:</label>
+                    <select class="rating-select">
+                        <option value="">Todas</option>
+                        <option value="4">4+ estrelas</option>
+                        <option value="3">3+ estrelas</option>
+                    </select>
+                </div>
+
+                <div class="filter-delivery-time">
+                    <label>Tempo de Entrega:</label>
+                    <select class="delivery-time-select">
+                        <option value="">Qualquer</option>
+                        <option value="30">Até 30 min</option>
+                        <option value="45">Até 45 min</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lista de Restaurantes -->
+        <section class="restaurants-list-section">
+
+        </section>
+
+        <!-- Paginação -->
+        <section class="pagination-section">
+            <div class="pagination-controls">
+                <button class="pagination-prev">Anterior</button>
+                <span class="pagination-current">Página 1 de 5</span>
+                <button class="pagination-next">Próximo</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3 class="footer-title">DeliveryExpress</h3>
+                <p class="footer-description">Sua plataforma de delivery favorita.</p>
+                <a href="login.html">Área Admin</a>
+            </div>
+            <div class="footer-links">
+                <h4 class="footer-subtitle">Links Rápidos</h4>
+                <ul class="footer-list">
+                    <li class="footer-item"><a href="#" class="footer-link">Sobre Nós</a></li>
+                    <li class="footer-item"><a href="#" class="footer-link">Restaurantes</a></li>
+                    <li class="footer-item"><a href="#" class="footer-link">Contato</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social">
+                <h4 class="footer-subtitle">Redes Sociais</h4>
+                <div class="social-links">
+                    <a href="#" class="social-link">Facebook</a>
+                    <a href="#" class="social-link">Instagram</a>
+                    <a href="#" class="social-link">Twitter</a>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <script src="/CodeBackup/js/restaurant.js" type="module"></script>
+</body>
+</html>
