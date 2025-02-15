@@ -144,7 +144,7 @@ function userLogout() {
     localStorage.removeItem('userLoggedIn');
     localStorage.removeItem('currentCustomer');
     updateLogoutVisibility(); // Atualiza a visibilidade do botão ao fazer logout
-    window.location.href = './user-login.html';
+    window.location.href = './landingPageBackup.html';
 }
 
 // Função para atualizar a visibilidade do botão de logout
