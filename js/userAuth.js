@@ -1,7 +1,43 @@
+// userAuth.js
 
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('userLoginForm');
     const registerForm = document.getElementById('userRegisterForm');
+    
+    // Adiciona lógica da navbar
+    const nav = document.querySelector('.nav-list');
+    if (nav) {  // Verifica se a navbar existe na página atual
+        const profileLi = document.createElement('li');
+        profileLi.className = 'nav-item';
+        profileLi.id = 'profile-item';
+        
+        const profileLink = document.createElement('a');
+        profileLink.className = 'nav-link';
+        profileLink.href = './profile.html';
+        profileLink.textContent = 'Meu Perfil';
+        
+        profileLi.appendChild(profileLink);
+        nav.appendChild(profileLi);
+
+        const logoutLi = document.createElement('li');
+        logoutLi.className = 'nav-item';
+        logoutLi.id = 'logout-item';
+        
+        const logoutLink = document.createElement('a');
+        logoutLink.className = 'nav-link';
+        logoutLink.href = '#';
+        logoutLink.textContent = 'Sair';
+        logoutLink.onclick = (e) => {
+            e.preventDefault();
+            userLogout();
+        };
+        
+        logoutLi.appendChild(logoutLink);
+        nav.appendChild(logoutLi);
+        
+        // Atualiza visibilidade inicial
+        updateLogoutVisibility();
+    }
     
     // Login Form Handler
     if (loginForm) {
@@ -23,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem('currentCustomer', JSON.stringify(user));
                 
                 // Redirect to menu/ordering page
-                window.location.href = '/html/cardapioTest.html';
+                window.location.href = './cardapiotest.html';
             } else {
                 alert('Credenciais inválidas. Tente novamente.');
             }
@@ -88,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('currentCustomer', JSON.stringify(newUser));
             
             // Redirect to menu page
-            window.location.href = '/menu.html';
+            window.location.href = './cardapioTest.html';
         });
     }
 });
@@ -98,7 +134,7 @@ function checkUserAuth() {
     const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
     
     if (!isLoggedIn) {
-        window.location.href = '/user-login.html';
+        window.location.href = './user-login.html';
         return false;
     }
     return true;
@@ -107,5 +143,23 @@ function checkUserAuth() {
 function userLogout() {
     localStorage.removeItem('userLoggedIn');
     localStorage.removeItem('currentCustomer');
-    window.location.href = '/user-login.html';
+    updateLogoutVisibility(); // Atualiza a visibilidade do botão ao fazer logout
+    window.location.href = './user-login.html';
 }
+
+// Função para atualizar a visibilidade do botão de logout
+function updateLogoutVisibility() {
+    const logoutItem = document.getElementById('logout-item');
+    const profileItem = document.getElementById('profile-item');
+    const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
+    
+    if (logoutItem) {
+        logoutItem.style.display = isLoggedIn ? 'block' : 'none';
+    }
+    if (profileItem) {
+        profileItem.style.display = isLoggedIn ? 'block' : 'none';
+    }
+}
+
+// Adiciona listener para mudanças no localStorage
+window.addEventListener('storage', updateLogoutVisibility);

@@ -43,32 +43,48 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     window.createOrder = () => {
-        const customerName = document.getElementById('customer-name').value;
-        if (!customerName) {
-            alert('Por favor, informe seu nome');
+        // Check if user is logged in
+        const currentUser = JSON.parse(localStorage.getItem('currentCustomer'));
+        if (!currentUser) {
+            alert('Por favor, faça login para finalizar o pedido');
+            window.location.href = 'login.html';
             return;
         }
         
         const order = {
             id: Date.now(),
-            customerName,
+            customerId: currentUser.id,
+            customerName: currentUser.name,
             items: cart,
             total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
             date: new Date().toISOString(),
             status: 'Pendente'
         };
         
-        // Salvar pedido
+        // Save order to orders list
         const orders = JSON.parse(localStorage.getItem('orders')) || [];
         orders.push(order);
         localStorage.setItem('orders', JSON.stringify(orders));
         
-        // Limpar carrinho
+        // Update user's orders in userCustomers
+        const users = JSON.parse(localStorage.getItem('userCustomers')) || [];
+        const userIndex = users.findIndex(u => u.id === currentUser.id);
+        
+        if (!users[userIndex].orders) {
+            users[userIndex].orders = [];
+        }
+        users[userIndex].orders.push(order);
+        
+        // Update both storage items
+        localStorage.setItem('userCustomers', JSON.stringify(users));
+        localStorage.setItem('currentCustomer', JSON.stringify(users[userIndex]));
+        
+        // Clear cart
         cart = [];
         localStorage.setItem('cart', JSON.stringify(cart));
         
         alert('Pedido realizado com sucesso!');
-        window.location.href = 'index.html';
+        window.location.href = 'profile.html';
     }
     
     renderCart();
