@@ -7,6 +7,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // Adiciona lógica da navbar
     const nav = document.querySelector('.nav-list');
     if (nav) {  // Verifica se a navbar existe na página atual
+        // Adiciona item de cupons
+        const couponsLi = document.createElement('li');
+        couponsLi.className = 'nav-item';
+        couponsLi.id = 'coupons-item';
+        
+        const couponsLink = document.createElement('a');
+        couponsLink.className = 'nav-link';
+        couponsLink.href = './cupons.html';
+        couponsLink.textContent = 'Cupons';
+        
+        couponsLi.appendChild(couponsLink);
+        nav.appendChild(couponsLi);
+
         const profileLi = document.createElement('li');
         profileLi.className = 'nav-item';
         profileLi.id = 'profile-item';
