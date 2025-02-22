@@ -1,0 +1,132 @@
+:root {
+    --cor-primaria: #FF4D4D;
+    --cor-texto-claro: #FFFFFF;
+    --cor-texto-escuro: #333333;
+    --cor-fundo-claro: #F9F9F9;
+    --cor-borda: #E0E0E0;
+}
+
+/* Cabeçalho */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: var(--cor-texto-claro);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-title {
+    color: var(--cor-primaria);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.main-nav .nav-list {
+    display: flex;
+    list-style: none;
+}
+
+.nav-item {
+    margin: 0 1rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--cor-texto-escuro);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--cor-primaria);
+}
+
+.header-cta-button {
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto-claro);
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.header-cta-button:hover {
+    background-color: #FF3333;
+}
+
+
+/*Cupons*/
+.coupons-container {
+    max-width: 1200px;
+    margin: 6rem auto 2rem;
+    padding: 1rem;
+}
+
+.coupons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.coupon-card {
+    background: #fff;
+    border: 2px solid var(--cor-primaria);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.coupon-card:hover {
+    transform: translateY(-5px);
+}
+
+.coupon-code {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--cor-primaria);
+    margin: 1rem 0;
+    padding: 0.5rem;
+    background: #fff5f5;
+    border-radius: 4px;
+}
+
+.coupon-discount {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+.coupon-description {
+    color: #666;
+    margin: 0.5rem 0;
+}
+
+.coupon-expiry {
+    font-size: 0.9rem;
+    color: #999;
+    margin-top: 1rem;
+}
+
+.copy-button {
+    background: var(--cor-primaria);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.copy-button:hover {
+    background-color: #FF3333;
+}

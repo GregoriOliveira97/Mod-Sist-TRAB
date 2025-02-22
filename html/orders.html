@@ -26,7 +26,11 @@
         <h2>Seu Carrinho</h2>
         <div id="cart-items"></div>
         <div id="cart-total"></div>
-        
+        <div class="coupon-section">
+            <input type="text" id="coupon-code" placeholder="Digite seu cupom de desconto">
+            <button onclick="applyCoupon()" class="apply-coupon-btn">Aplicar Cupom</button>
+            <div id="coupon-message"></div>
+        </div>
         <div id="order-form" style="display: none;">
             <h3>Finalizar Pedido</h3>
             <button onclick="createOrder()">Confirmar Pedido</button>
