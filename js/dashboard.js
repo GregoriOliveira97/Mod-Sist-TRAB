@@ -329,21 +329,37 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         // Itens de menu padrão se não houver dados salvos
         menuItems = [
-            { 
-                id: 1, 
-                name: 'Hambúrguer Clássico', 
-                category: 'Hambúrgueres', 
-                description: "Hambúrguer artesanal com blend especial",
-                price: 25.99, 
-                image: 'caminho/para/imagem.jpg' 
+            {
+                id: '1',
+                name: 'X-Burguer',
+                category: 'Lanches',
+                price: 12.90,
+                description: 'Hambúrguer com queijo, alface e tomate',
+                image: '/images/xburguer.jpg'
             },
-            { 
-                id: 2, 
-                name: 'Refrigerante', 
-                category: 'Bebidas', 
-                description: "Hambúrguer artesanal com blend especial",
-                price: 5.50, 
-                image: 'caminho/para/imagem.jpg' 
+            {
+                id: '2',
+                name: 'Coca-Cola',
+                category: 'Bebidas',
+                price: 5.00,
+                description: 'Refrigerante 350ml',
+                image: '/images/coca.jpg'
+            },
+            {
+                id: '3',
+                name: 'Batata Frita',
+                category: 'Acompanhamentos',
+                price: 8.90,
+                description: 'Porção de batata frita crocante',
+                image: '/images/batata.jpg'
+            },
+            {
+                id: '4',
+                name: 'Milk Shake',
+                category: 'Bebidas',
+                price: 13.90,
+                description: 'Milk shake de chocolate 400ml',
+                image: '/images/milkshake.jpg'
             }
         ];
         localStorage.setItem('menuItems', JSON.stringify(menuItems));

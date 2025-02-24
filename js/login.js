@@ -1,4 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    if (!localStorage.getItem('users')) {
+        // Cria um usuário admin padrão
+        const defaultAdmin = [{
+            id: 1,
+            name: "Admin",
+            email: "admin@admin.com",
+            password: "admin123"
+        }];
+
+        localStorage.setItem('users', JSON.stringify(defaultAdmin));
+    }
     const loginForm = document.getElementById('adminLoginForm');
     
     loginForm.addEventListener('submit', function(e) {

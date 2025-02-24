@@ -1,6 +1,51 @@
 import { menuItems as defaultMenuItems } from './menuData.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    function initializeMenuItems() {
+        // Verifica se já existem itens no menu
+        if (!localStorage.getItem('menuItems')) {
+            // Itens padrão do menu
+            const defaultMenuItems = [
+                {
+                    id: '1',
+                    name: 'X-Burguer',
+                    category: 'Lanches',
+                    price: 12.90,
+                    description: 'Hambúrguer com queijo, alface e tomate',
+                    image: '/images/xburguer.jpg'
+                },
+                {
+                    id: '2',
+                    name: 'Coca-Cola',
+                    category: 'Bebidas',
+                    price: 5.00,
+                    description: 'Refrigerante 350ml',
+                    image: '/images/coca.jpg'
+                },
+                {
+                    id: '3',
+                    name: 'Batata Frita',
+                    category: 'Acompanhamentos',
+                    price: 8.90,
+                    description: 'Porção de batata frita crocante',
+                    image: '/images/batata.jpg'
+                },
+                {
+                    id: '4',
+                    name: 'Milk Shake',
+                    category: 'Bebidas',
+                    price: 13.90,
+                    description: 'Milk shake de chocolate 400ml',
+                    image: '/images/milkshake.jpg'
+                }
+            ];
+
+            // Salva os itens padrão no localStorage
+            localStorage.setItem('menuItems', JSON.stringify(defaultMenuItems));
+        }
+    }
+
     let currentPage = 1;
     const itemsPerPage = 4;
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -163,4 +208,5 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Chamada inicial de renderização com paginação
     renderMenuItems();
+    initializeMenuItems();
 });
