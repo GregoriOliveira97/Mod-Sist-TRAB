@@ -366,7 +366,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     renderUsers();
-    renderMenuItems();
     renderCustomerUsers();
 
 });
