@@ -209,6 +209,10 @@ body {
     margin-bottom: 2rem;
 }
 
+.footer-brand{
+    display: flex;
+    flex-direction: column;
+}
 .footer-content > div {
     flex: 1;
     margin-right: 2rem;

@@ -300,6 +300,92 @@ body {
     display: none;
 }
 
+/*restaurant-dashboard*/
+/* Adicione ou atualize estes estilos no seu arquivo dashboardAntiga.css */
+
+/* Estilos para a modal de detalhes do pedido */
+.order-details {
+    width: 100%;
+}
+
+.order-header {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.order-meta {
+    margin-top: 10px;
+}
+
+.order-meta div {
+    margin-bottom: 5px;
+}
+
+.order-address {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.order-items {
+    margin-bottom: 20px;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.order-summary {
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+.order-summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+.order-summary-row.total {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #ddd;
+}
+
+/* Estilização para os diferentes status de pedido */
+.order-status {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.status-pending {
+    background-color: #FFD700;
+    color: #333;
+}
+
+.status-sent {
+    background-color: #1E90FF;
+    color: white;
+}
+
+.status-delivered {
+    background-color: #32CD32;
+    color: white;
+}
+
+.status-canceled {
+    background-color: #FF6347;
+    color: white;
+}
 
 @media screen and (min-width: 1024px) {
     .sidebar {

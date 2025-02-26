@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeliveryExpress - Painel do Restaurante</title>
+    <link rel="stylesheet" href="/css/dashboardAntiga.css">
+</head>
+<body>
+    <div class="mobile-header">
+        <h2>DeliveryExpress</h2>
+        <button class="mobile-menu-toggle" onclick="toggleSidebar()">☰</button>
+    </div>
+
+    <div class="overlay" onclick="toggleSidebar()"></div>
+
+    <div class="admin-dashboard">
+        <aside class="sidebar">
+            <h2>DeliveryExpress</h2>
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="#menu-section" onclick="showSection('menu-section')">Cardápio</a></li>
+                    <li><a href="#orders-section" onclick="showSection('orders-section')">Pedidos</a></li>
+                    <li><a href="landingPageBackup.html">Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <main class="main-content">
+            <section class="dashboard-section" id="menu-section">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h2>Gerenciamento de Cardápio</h2>
+                    <button class="btn btn-add" onclick="openMenuItemCreateModal()">+ Adicionar Item</button>
+                </div>
+                <div class="table-responsive">
+                    <table class="dashboard-table" id="menu-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Categoria</th>
+                                <th>Descrição</th>
+                                <th>Preço</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="menu-tbody">
+                            <!-- Conteúdo será preenchido por JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="dashboard-section" id="orders-section" style="display: none;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h2>Gerenciamento de Pedidos</h2>
+                    <div>
+                        <select id="order-status-filter" onchange="filterOrdersByStatus()">
+                            <option value="all">Todos os Pedidos</option>
+                            <option value="Pendente">Pendentes</option>
+                            <option value="Enviado">Enviados</option>
+                            <option value="Entregue">Entregues</option>
+                            <option value="Cancelado">Cancelados</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="dashboard-table" id="orders-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Cliente</th>
+                                <th>Data</th>
+                                <th>Itens</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orders-tbody">
+                            <!-- Conteúdo será preenchido por JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modais de Itens de Menu -->
+    <div id="menu-item-create-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Adicionar Novo Item de Menu</h3>
+                <span class="close-modal" onclick="closeModal('menu-item-create-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="menu-item-create-name" placeholder="Nome">
+                <select id="menu-item-create-category">
+                    <option value="">Selecione a Categoria</option>
+                    <option value="Lanches">Lanches</option>
+                    <option value="Acompanhamentos">Acompanhamentos</option>
+                    <option value="Pratos">Pratos</option>
+                    <option value="Sobremesas">Sobremesas</option>
+                    <option value="Bebidas">Bebidas</option>
+                </select>
+                <input type="text" id="menu-item-create-description" placeholder="Descrição">
+                <input type="number" step="0.01" id="menu-item-create-price" placeholder="Preço">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-delete" onclick="closeModal('menu-item-create-modal')">Cancelar</button>
+                <button class="btn btn-edit" onclick="createMenuItem()">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="menu-item-edit-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Editar Item de Menu</h3>
+                <span class="close-modal" onclick="closeModal('menu-item-edit-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="menu-item-edit-id">
+                <input type="text" id="menu-item-edit-name" placeholder="Nome">
+                <select id="menu-item-edit-category">
+                    <option value="">Selecione a Categoria</option>
+                    <option value="Lanches">Lanches</option>
+                    <option value="Acompanhamentos">Acompanhamentos</option>
+                    <option value="Pratos">Pratos</option>
+                    <option value="Sobremesas">Sobremesas</option>
+                    <option value="Bebidas">Bebidas</option>
+                </select>
+                <input type="text" id="menu-item-edit-description">
+                <input type="number" step="0.01" id="menu-item-edit-price" placeholder="Preço">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-delete" onclick="closeModal('menu-item-edit-modal')">Cancelar</button>
+                <button class="btn btn-edit" onclick="updateMenuItem()">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="menu-item-delete-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Confirmar Exclusão</h3>
+                <span class="close-modal" onclick="closeModal('menu-item-delete-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="menu-item-delete-id">
+                <p>Tem certeza que deseja excluir este item de menu?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-delete" onclick="deleteMenuItem()">Excluir</button>
+                <button class="btn btn-edit" onclick="closeModal('menu-item-delete-modal')">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Detalhes do Pedido -->
+    <div id="order-details-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Detalhes do Pedido</h3>
+                <span class="close-modal" onclick="closeModal('order-details-modal')">&times;</span>
+            </div>
+            <div class="modal-body" id="order-details-content">
+                <!-- Conteúdo será preenchido por JavaScript -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-edit" onclick="closeModal('order-details-modal')">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Atualização de Status -->
+    <div id="update-status-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Atualizar Status do Pedido</h3>
+                <span class="close-modal" onclick="closeModal('update-status-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="update-order-id">
+                <p>Selecione o novo status para o pedido:</p>
+                <select id="update-order-status">
+                    <option value="Pendente">Pendente</option>
+                    <option value="Enviado">Enviado</option>
+                    <option value="Entregue">Entregue</option>
+                    <option value="Cancelado">Cancelado</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-delete" onclick="closeModal('update-status-modal')">Cancelar</button>
+                <button class="btn btn-edit" onclick="updateOrderStatus()">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/restaurant-dashboard.js"></script>
+</body>
+</html>
