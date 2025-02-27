@@ -254,3 +254,35 @@ body {
     overflow-y: auto;
     padding-right: 0.5rem;
 }
+
+
+.order-status {
+    font-weight: bold;
+}
+
+.status-pendente {
+    color: #f39c12; /* Laranja para pedidos pendentes */
+}
+
+.status-enviado {
+    color: #3498db; /* Azul para pedidos enviados */
+}
+
+.status-entregue {
+    color: #2ecc71; /* Verde para pedidos entregues */
+}
+
+.status-cancelado {
+    color: #e74c3c; /* Vermelho para pedidos cancelados */
+}
+
+/* Animação para destacar mudanças recentes */
+@keyframes statusUpdate {
+    0% { background-color: rgba(255, 255, 220, 0); }
+    50% { background-color: rgba(255, 255, 220, 1); }
+    100% { background-color: rgba(255, 255, 220, 0); }
+}
+
+.status-updated {
+    animation: statusUpdate 2s ease;
+}

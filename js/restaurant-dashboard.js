@@ -298,6 +298,13 @@ function updateOrderStatus() {
             if (userOrderIndex !== -1) {
                 users[userIndex].orders[userOrderIndex].status = newStatus;
                 localStorage.setItem('userCustomers', JSON.stringify(users));
+                
+                // Atualizar também o usuário atual se for o mesmo usuário
+                const currentUser = JSON.parse(localStorage.getItem('currentCustomer'));
+                if (currentUser && currentUser.id === customerId) {
+                    currentUser.orders[userOrderIndex].status = newStatus;
+                    localStorage.setItem('currentCustomer', JSON.stringify(currentUser));
+                }
             }
         }
     }
